@@ -75,3 +75,32 @@ function makeup_amount(x, coins) {
 }
 
 display_list(makeup_amount(6, list(1, 2)));
+
+/*inclass studio*/
+function remove_duplicates(lst) {
+    return is_null(lst)
+            ? null
+            : accumulate((x, y) => !is_null(member(x, y))
+                                        ? y
+                                        : pair(x, y)
+                            , null
+                            , lst);
+}
+
+function subset(xs) {
+    if (is_null(xs)) {
+        return list(null);
+    } else {
+    const combi_A = subset(tail(xs));
+    const combi_B = map(subset => pair(head(xs), subset), combi_A);
+    return append(combi_A, combi_B);
+    }
+}
+
+function permutations(s) {
+    if (is_null(s)) {
+        return list(null);
+    } else {
+        accumulate(append, null, map(x => map(p => pair(x, p), permutations(remove(x,s))), s));
+    }
+}
