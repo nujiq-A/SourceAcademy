@@ -7,6 +7,14 @@
 //     }
 // }
 
+function reverse5cm(){
+    const posA = ev3_motorGetPosition(ev3_motorA());
+    const posB = ev3_motorGetPosition(ev3_motorB());
+    ev3_runToAbsolutePosition(ev3_motorA(), posA - 75, 200);
+    ev3_runToAbsolutePosition(ev3_motorB(), posB - 75, 200);
+    return ev3_pause(2000);
+}
+
 function correctPosition() {
     display("turning");
     let i = undefined;
@@ -41,6 +49,7 @@ function followLine() {
         ev3_runForTime(ev3_motorB(), 100, 100);
         ev3_pause(100);
     }
+    reverse5cm();
     correctPosition();
     
     if (ev3_touchSensorPressed(ev3_touchSensor2())) {
