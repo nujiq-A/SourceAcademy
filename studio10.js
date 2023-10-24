@@ -75,4 +75,64 @@ function mcc(n, k) {
     
 }
 
-mcc(365, 5);  // Expected result: 1730
+// mcc(365, 5);  // Expected result: 1730
+
+function rotate_matrix(M) {
+    let len = array_length(M);
+    
+    for (let j = 0; j < len; j = j + 1) {
+        for(let i = j + 1; i < len; i = i + 1) {
+            if (j !== i) {
+                const temp = M[i][j];
+                M[i][j] = M[j][i];
+                M[j][i] = temp;
+            }
+        }
+    }
+    for (let i = 0; i < len; i = i + 1) {
+        for (let j = 0; j < math_floor(len / 2); j = j + 1) {
+            const temp = M[i][j];
+            M[i][j] = M[i][len - j - 1];
+            M[i][len - j - 1] = temp;
+        }
+    }
+    return M;
+}
+
+
+const G = [[1,2,3,4], [5,6,7,8],[9,10,11,12],[13,14,15,16]];
+
+rotate_matrix(G);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
